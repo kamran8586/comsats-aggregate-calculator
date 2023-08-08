@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comsats aggregate calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Aggregate calculator</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-1">
+    <h2 class="text-center">Enter your marks to calculate aggregate</h2>
+    <form class="row g-3 mt-5" action="{{ url_for("comsats_cal")}}" method="post">
+      <div class="mb-3">
+        <label for="matric_total" class="form-label">Total Matric Marks</label>
+        <input type="number" class="form-control" id="matric_total" name="t_matric" placeholder="e.g 0000">
+      </div>
+      <div class="mb-3">
+        <label for="matric_obtained" class="form-label">Obtained Matric Marks</label>
+        <input type="number" class="form-control" id="matric_obtained" name="o_matric" placeholder="e.g 0000">
+      </div>
+      <div class="mb-3">
+        <label for="fsc_total" class="form-label">Total FSC Marks</label>
+        <input type="number" class="form-control" id="fsc_total" name="t_fsc" placeholder="e.g 0000">
+      </div>
+      <div class="mb-3">
+        <label for="fsc_obtained" class="form-label">Obtained FSC Marks</label>
+        <input type="number" class="form-control" id="fsc_obtained" name="o_fsc" placeholder="e.g 0000">
+      </div>
+      <div class="mb-3">
+        <label for="nts" class="form-label">Obtained NTS Marks</label>
+        <input type="number" class="form-control" id="nts" name="nts" placeholder="e.g 0000">
+      </div>
+      <div class="mb-3">
+        <button class="btn-primary btn" type="submit">Submit</button>
+      </div>
+    </form>
+
+    {% if result != 0 %}
+
+      {% if result<50 %}
+      <p class="bg-danger p-2">{{result}}%</p>
+      {% else %}
+      <p class="bg-success p-2">{{result}}%</p>
+      {% endif %}
+
+      {% else %}
+      <p></p>
+    {% endif %}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
